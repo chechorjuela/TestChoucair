@@ -38,6 +38,7 @@ namespace TestChoucair.Application.Service
             SignInResponseDto responseDto = _mapper.Map<SignInResponseDto>(result);
             responseDto.Token = token;
             responseDto.UserName = user.UserName;
+            responseDto.UserId = user.Id;
             return responseDto;
 
         }

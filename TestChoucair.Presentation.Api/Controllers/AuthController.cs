@@ -45,11 +45,18 @@ namespace TestChoucair.Presentation.Api.Controllers
             if (!validationResult.IsValid)
                 return BadRequest(validationResult.Errors);
 
-            var result = await _authService.SignUp(signUp);
-            if (result == null)
-                return NotFound(BaseResponseResult.CreateResponse<SignUpResponseDto>(result, HttpStatusCode.NotFound, "Task not found"));
+            try{
+                var result = await _authService.SignUp(signUp);
+                if (result == null)
+                    return NotFound(BaseResponseResult.CreateResponse<SignUpResponseDto>(result, HttpStatusCode.NotFound, "Task not found"));
+    
+                return Ok(BaseResponseResult.CreateResponse(result, HttpStatusCode.OK, "Task get all successfully"));
 
-            return Ok(BaseResponseResult.CreateResponse(result, HttpStatusCode.OK, "Task get all successfully"));
+            }catch(Exception exp){
+                return NotFound(BaseResponseResult.CreateResponse<SignUpResponseDto>(null, HttpStatusCode.NotFound, "Task not found"));
+            }
+           
+
         }
     }
 }
