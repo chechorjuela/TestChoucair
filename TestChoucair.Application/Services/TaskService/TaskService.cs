@@ -66,11 +66,11 @@ namespace TestChoucair.Application.Services
         public async Task<TaskResponseDto> UpdateTaskAsync(int taskId, TaskRequestDto taskRequestDto)
         {
             var taskUser = _mapper.Map<TaskUser>(taskRequestDto);
-            //taskUser.Id = taskId; // Ensure the ID is set correctly
+            taskUser.Id = taskId; // Ensure the ID is set correctly
             _unitOfWork.Repository.Update(taskUser);
             await _unitOfWork.SaveChangesAsync();
-            //var responseTask = await _unitOfWork.Repository.GetByIdAsync(taskUser.Id);
-            return 0 != null ? _mapper.Map<TaskResponseDto>(null) : null;
+            var responseTask = await _unitOfWork.Repository.GetByIdAsync(taskUser.Id);
+            return responseTask != null ? _mapper.Map<TaskResponseDto>(responseTask) : null;
         }
     }
 }
