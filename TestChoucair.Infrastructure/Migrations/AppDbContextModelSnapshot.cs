@@ -40,6 +40,9 @@ namespace TestChoucair.Infrastructure.Migrations
                     b.Property<bool>("IsCompleted")
                         .HasColumnType("tinyint(1)");
 
+                    b.Property<DateTime>("Time")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("longtext");
@@ -67,11 +70,6 @@ namespace TestChoucair.Infrastructure.Migrations
 
                     b.Property<DateTime>("CreateAt")
                         .HasColumnType("datetime(6)");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasMaxLength(45)
-                        .HasColumnType("varchar(45)");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
@@ -104,12 +102,17 @@ namespace TestChoucair.Infrastructure.Migrations
             modelBuilder.Entity("TestChoucair.Domain.Model.TaskUser", b =>
                 {
                     b.HasOne("TestChoucair.Domain.Model.User", "User")
-                        .WithMany()
+                        .WithMany("Tasks")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("TestChoucair.Domain.Model.User", b =>
+                {
+                    b.Navigation("Tasks");
                 });
 #pragma warning restore 612, 618
         }

@@ -28,17 +28,17 @@ namespace TestChoucair.Application.Service
         }
         public async Task<SignInResponseDto> SignIn(SignInRequestDto signIn)
         {
-            string token = "";
             var user = _mapper.Map<User>(signIn);
-          
             var result = await _authRepository.SignIn(user, signIn.Password);
-            if (result != null)
-                token = _jwtTokenService.GenerateToken(result);
+            var responseDto = _mapper.Map<SignInResponseDto>(result);
 
-            SignInResponseDto responseDto = _mapper.Map<SignInResponseDto>(result);
-            responseDto.Token = token;
-            responseDto.UserName = user.UserName;
-            responseDto.UserId = user.Id;
+            if (result != null)
+            {
+                string token = _jwtTokenService.GenerateToken(result);
+                responseDto.Token = token;
+            }
+
+            // If result is null, return null or throw an exception as needed
             return responseDto;
 
         }
@@ -50,7 +50,7 @@ namespace TestChoucair.Application.Service
             SignUpResponseDto response = new SignUpResponseDto()
             {
                 Success = result != null ? true : false,
-                Message = result != null ? "User Loggin" : "User cannot login"
+                Message = result != null ? "User Signup Success" : "User cannot signup"
             };
 
             return response;

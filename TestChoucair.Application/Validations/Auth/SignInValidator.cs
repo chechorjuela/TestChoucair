@@ -9,15 +9,11 @@ namespace TestChoucair.Application.Validator
         {
             RuleFor(x => x.Password)
             .NotEmpty().WithMessage("Password is required.");
+            
+            RuleFor(x => x.UserName)
+            .NotEmpty().WithMessage("UserName is required.");
 
-            RuleFor(x => x).Custom((dto, context) =>
-            {
-                if (string.IsNullOrEmpty(dto.Email) || string.IsNullOrEmpty(dto.UserName))
-                {
-                    context.AddFailure("Email", "Either Email or UserName must be provided.");
-                    context.AddFailure("UserName", "Either Email or UserName must be provided.");
-                }
-            });
+
         }
     }
 }

@@ -19,7 +19,7 @@ namespace TestChoucair.Infrastructure.Repository
 
         public async Task<User> SignIn(User signIn, string password)
         {
-            var user = await _context.Users.Where(u => u.Email == signIn.Email).FirstOrDefaultAsync();
+            var user = await _context.Users.Where(u => u.UserName == signIn.UserName).FirstOrDefaultAsync();
             if (!BCrypt.Net.BCrypt.Verify(password, user.PasswordHash))
             {
                 return null;

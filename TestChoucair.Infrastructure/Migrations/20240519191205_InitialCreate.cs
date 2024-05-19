@@ -25,8 +25,6 @@ namespace TestChoucair.Infrastructure.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     LastName = table.Column<string>(type: "varchar(45)", maxLength: 45, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Email = table.Column<string>(type: "varchar(45)", maxLength: 45, nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
                     UserName = table.Column<string>(type: "varchar(45)", maxLength: 45, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     PasswordHash = table.Column<string>(type: "varchar(150)", maxLength: 150, nullable: false)
@@ -51,6 +49,7 @@ namespace TestChoucair.Infrastructure.Migrations
                     Description = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     IsCompleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    Time = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     UserId = table.Column<int>(type: "int", nullable: false),
                     CreateAt = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     UpdateAt = table.Column<DateTime>(type: "datetime(6)", nullable: true)

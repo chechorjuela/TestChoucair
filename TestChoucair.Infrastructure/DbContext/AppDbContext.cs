@@ -20,28 +20,29 @@ namespace TestChoucair.Infrastructure.Repository
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
-            modelBuilder.Entity<User>(entity =>
-            {
-                entity.HasKey(e => e.Id);
-                entity.Property(e => e.FirstName).IsRequired().HasMaxLength(150);
-                entity.Property(e => e.LastName).IsRequired().HasMaxLength(45);
-                entity.Property(e => e.Email).IsRequired().HasMaxLength(45);
-                entity.Property(e => e.UserName).IsRequired().HasMaxLength(45);
-                entity.Property(e => e.PasswordHash).IsRequired().HasMaxLength(150);
-                entity.Property(e => e.CreateAt).IsRequired();
-                entity.Property(e => e.UpdateAt).IsRequired(false);
-            });
+           modelBuilder.Entity<User>(entity =>
+        {
+            entity.HasKey(e => e.Id);
+            entity.Property(e => e.FirstName).IsRequired().HasMaxLength(150);
+            entity.Property(e => e.LastName).IsRequired().HasMaxLength(45);
+            entity.Property(e => e.UserName).IsRequired().HasMaxLength(45);
+            entity.Property(e => e.PasswordHash).IsRequired().HasMaxLength(150);
+            entity.Property(e => e.CreateAt).IsRequired();
+            entity.Property(e => e.UpdateAt).IsRequired(false);
+            entity.HasMany(e => e.Tasks)
+                .WithOne(t => t.User)
+                .HasForeignKey(t => t.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
+        });
 
-            modelBuilder.Entity<TaskUser>(entity =>
-            {
-                entity.HasKey(e => e.Id);
-                entity.Property(e => e.Title).IsRequired();
-                entity.Property(e => e.Description).IsRequired();
-                entity.Property(e => e.IsCompleted).IsRequired();
-                entity.Property(e => e.UserId).IsRequired();
-
-           
-            });
+        modelBuilder.Entity<TaskUser>(entity =>
+        {
+            entity.HasKey(e => e.Id);
+            entity.Property(e => e.Title).IsRequired();
+            entity.Property(e => e.Description).IsRequired();
+            entity.Property(e => e.IsCompleted).IsRequired();
+            entity.Property(e => e.UserId).IsRequired();
+        });
 
         }
     }

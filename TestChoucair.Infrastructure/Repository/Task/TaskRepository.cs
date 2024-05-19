@@ -3,7 +3,7 @@ using TestChoucair.Domain.Model;
 
 namespace TestChoucair.Infrastructure.Repository
 {
-    public class TaskRepository : BaseRepository<Task>, ITaskRepository
+    public class TaskRepository : BaseRepository<TaskUser>, ITaskRepository
     {
         private readonly AppDbContext _context;
         public TaskRepository(AppDbContext context) : base(context)
@@ -20,8 +20,8 @@ namespace TestChoucair.Infrastructure.Repository
 
         public async Task<List<TaskUser>> GetTasksByUserId(int userId)
         {
-            // var tasks = _context.Tasks.Where( f => userId == f.UserId).ToList();
-            return null;
+            var tasks = _context.Tasks.Where( f => userId == f.UserId).ToList();
+            return tasks;
         }
     }
 }
