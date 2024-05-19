@@ -1,0 +1,3 @@
+[submodule "TestChoucair.Presentation.Angular"]
+	path = TestChoucair.Presentation.Angular
+	url = https://github.com/chechorjuela/Choucair.Presentation.Angular.git
