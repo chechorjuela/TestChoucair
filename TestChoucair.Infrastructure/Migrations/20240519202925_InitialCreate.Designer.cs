@@ -12,7 +12,7 @@ using TestChoucair.Infrastructure.Repository;
 namespace TestChoucair.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240519191205_InitialCreate")]
+    [Migration("20240519202925_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
