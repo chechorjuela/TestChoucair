@@ -28,7 +28,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\TestChoucar.Domain\TestChoucair.Domain.csproj" />
+	  <ProjectReference Include="..\TestChoucair.Domain\TestChoucair.Domain.csproj" />
 	</ItemGroup>
 
 </Project>

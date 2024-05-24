@@ -12,8 +12,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\TestChoucair.Domain\TestChoucair.Domain.csproj" />
     <ProjectReference Include="..\TestChoucair.Infrastructure\TestChoucair.Infrastructure.csproj" />
-    <ProjectReference Include="..\TestChoucar.Domain\TestChoucair.Domain.csproj" />
   </ItemGroup>
 
 </Project>
