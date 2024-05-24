@@ -7,9 +7,7 @@ using TestChoucair.Application.Service;
 using TestChoucair.Application.Services;
 using TestChoucair.Application.Validator;
 using TestChoucair.Domain.Config;
-using TestChoucair.Domain.Repository;
 using TestChoucair.Infrastructure;
-using TestChoucair.Infrastructure.Repository;
 
 namespace TestChoucair.Application
 {

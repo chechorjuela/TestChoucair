@@ -56,8 +56,7 @@ namespace TestChoucair.Infrastructure
                     ValidAudience = validAudience,
                     IssuerSigningKey = new SymmetricSecurityKey(key),
                 };
-            }
-            );
+            });
 
             return services;
         }

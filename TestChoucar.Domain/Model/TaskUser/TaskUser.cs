@@ -1,6 +1,6 @@
 namespace TestChoucair.Domain.Model
 {
-    public class TaskUser : BaseModel
+    public class TaskUser : Entity<TaskUserId>
     {
         public string Title { get; set; }
         public string Description { get; set; }

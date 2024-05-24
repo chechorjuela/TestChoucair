@@ -1,9 +1,8 @@
 
 namespace TestChoucair.Domain.Model
 {
-    public class User
+    public class User : Entity<UserId>
     {
-        public int Id {  get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string UserName { get; set; }
@@ -11,7 +10,8 @@ namespace TestChoucair.Domain.Model
         public DateTime CreateAt { get; set; } = DateTime.UtcNow;
         public DateTime? UpdateAt { get; set; }
         public ICollection<TaskUser> Tasks { get; set; }
+        public ICollection<Role>? Roles { get; set; }
 
     }
- 
+
 }
